@@ -161,6 +161,130 @@
 
   /* ── música (iframe oculto) ── */
   #yt-player { display: none; }
+
+  /* ── intro ── */
+  #intro {
+    position: fixed; inset: 0; z-index: 100;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    background: linear-gradient(135deg, #1a0008 0%, #3d0018 40%, #1a0008 100%);
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+    text-align: center; padding: 24px;
+  }
+  #intro.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+  .intro-icon { font-size: 5rem; animation: heartbeat 1.2s ease infinite; margin-bottom: 24px; display: block; }
+  .intro-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2rem, 7vw, 3.6rem);
+    background: linear-gradient(90deg, #ff6b9d, #ffb347, #ff6b9d);
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s linear infinite;
+    margin-bottom: 12px;
+  }
+  .intro-sub {
+    font-size: 1rem; color: rgba(255,182,215,0.65);
+    letter-spacing: 2px; text-transform: uppercase; margin-bottom: 48px;
+  }
+  .btn-open {
+    background: linear-gradient(135deg, #c0004a, #ff6b9d);
+    color: #fff; border: none; cursor: pointer;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.4rem; padding: 16px 48px;
+    border-radius: 50px;
+    box-shadow: 0 8px 32px rgba(192,0,74,0.5);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .btn-open:hover { transform: scale(1.06); box-shadow: 0 12px 40px rgba(255,107,157,0.65); }
+  .btn-open:active { transform: scale(0.97); }
+
+  /* ── main content ── */
+  #main-content { opacity: 0; transition: opacity 1s ease 0.2s; }
+  #main-content.visible { opacity: 1; }
+
+  /* ── section titles & action buttons ── */
+  .section-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    color: #ff6b9d; margin-bottom: 20px;
+  }
+  .btn-action {
+    background: transparent;
+    border: 2px solid rgba(255,107,157,0.55);
+    color: #ff6b9d;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.2rem; padding: 12px 36px;
+    border-radius: 50px; cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .btn-action:hover { background: rgba(255,107,157,0.1); border-color: #ff6b9d; transform: scale(1.04); }
+  .btn-action:active { transform: scale(0.97); }
+
+  /* ── love letter ── */
+  .letter-section { margin-bottom: 36px; }
+  .letter-body {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.9s cubic-bezier(0.4,0,0.2,1), opacity 0.6s ease;
+    opacity: 0;
+  }
+  .letter-body.open { max-height: 900px; opacity: 1; }
+  .letter-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,107,157,0.25);
+    border-radius: 20px; padding: 32px;
+    margin-top: 20px; text-align: left;
+    backdrop-filter: blur(8px);
+  }
+  .letter-card p {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.1rem, 3vw, 1.45rem);
+    color: #ffd6e7; line-height: 1.9; margin-bottom: 16px;
+  }
+  .letter-card p:last-child { margin-bottom: 0; }
+  .letter-sign { text-align: right; color: #ff6b9d !important; }
+
+  /* ── reasons ── */
+  .reasons-section { margin-bottom: 36px; }
+  .reason-display { min-height: 80px; margin-top: 20px; }
+  .reason-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,107,157,0.25);
+    border-radius: 20px; padding: 28px 32px;
+    backdrop-filter: blur(8px);
+    animation: fadeInUp 0.45s ease;
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .reason-number {
+    font-size: 0.78rem; letter-spacing: 2px;
+    text-transform: uppercase; color: #ff6b9d88; margin-bottom: 10px;
+  }
+  .reason-text {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.2rem, 3.5vw, 1.7rem);
+    color: #ffd6e7; line-height: 1.6;
+  }
+
+  /* ── final section ── */
+  .final-section {
+    background: linear-gradient(135deg, rgba(192,0,74,0.18), rgba(255,107,157,0.08));
+    border: 1px solid rgba(255,107,157,0.3);
+    border-radius: 24px; padding: 40px 36px;
+    margin-bottom: 36px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 50px rgba(192,0,74,0.18);
+  }
+  .final-icon { font-size: 3rem; display: block; margin-bottom: 20px; animation: heartbeat 1.2s ease infinite; }
+  .final-section p {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+    color: #ffd6e7; line-height: 1.8; margin-bottom: 14px;
+  }
+  .final-section p:last-child { margin-bottom: 0; }
+  .final-highlight { color: #ff6b9d !important; font-size: clamp(1.5rem, 4vw, 2.1rem) !important; }
 </style>
 </head>
 <body>
@@ -175,7 +299,15 @@
   allowfullscreen>
 </iframe>
 
-<div class="container">
+<!-- Intro -->
+<div id="intro">
+  <span class="intro-icon">💝</span>
+  <h2 class="intro-title">Tenho uma surpresa para você ❤️</h2>
+  <p class="intro-sub">Algo especial preparado com muito amor</p>
+  <button class="btn-open" onclick="openSurprise()">Abrir surpresa ❤️</button>
+</div>
+
+<div id="main-content" class="container">
 
   <span class="header-icon">❤️</span>
   <h1>Feliz Dia dos Namorados</h1>
@@ -207,6 +339,36 @@
       mais que especial, minha eterna namorada.<br><br>
       <strong style="color:#ff6b9d; font-size:1.3em;">Eu te Amo ❤️</strong>
     </p>
+  </div>
+
+  <!-- Carta de amor -->
+  <div class="letter-section">
+    <h2 class="section-title">Minha carta para você 💌</h2>
+    <button class="btn-action" id="btnLetter" onclick="toggleLetter()">Abrir carta</button>
+    <div class="letter-body" id="letterBody">
+      <div class="letter-card">
+        <p>Meu amor,</p>
+        <p>Cada dia ao seu lado me lembra por que eu acredito no amor de verdade. Você não é só minha namorada — você é meu lar, minha calma em meio ao caos, o sorriso que aparece sozinho quando eu menos espero.</p>
+        <p>Você me faz querer ser uma versão melhor de mim, não por obrigação, mas porque do seu lado tudo parece mais possível. A maneira como você ri, como você olha para mim, como você existe — tudo isso me encanta todos os dias.</p>
+        <p>Neste dia dos namorados, quero que você saiba: você é o amor mais bonito que já aconteceu na minha vida.</p>
+        <p class="letter-sign">Para sempre seu ❤️</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Motivos -->
+  <div class="reasons-section">
+    <h2 class="section-title">Motivos pelos quais eu te amo ❤️</h2>
+    <button class="btn-action" onclick="showReason()">Mostrar motivo</button>
+    <div class="reason-display" id="reasonDisplay"></div>
+  </div>
+
+  <!-- Seção final -->
+  <div class="final-section">
+    <span class="final-icon">💝</span>
+    <p>Prometo continuar escolhendo você todos os dias.</p>
+    <p>Obrigado por ser minha paz, meu amor e meu lugar favorito no mundo.</p>
+    <p class="final-highlight">Eu te amo infinitamente ❤️</p>
   </div>
 
   <p class="footer">Feito com ❤️ especialmente para você</p>
@@ -251,8 +413,51 @@ setInterval(() => changeSlide(1), 4500);
 // ── Autoplay ao clicar (contorna política de browsers) ───────────────────
 document.body.addEventListener('click', () => {
   const f = document.getElementById('yt-player');
-  f.src = f.src; // recarrega com interação do usuário
+  f.src = f.src;
 }, { once: true });
+
+// ── Intro ─────────────────────────────────────────────────────────────────
+function openSurprise() {
+  document.getElementById('intro').classList.add('hidden');
+  document.getElementById('main-content').classList.add('visible');
+}
+
+// ── Carta de amor ─────────────────────────────────────────────────────────
+function toggleLetter() {
+  const body = document.getElementById('letterBody');
+  const btn  = document.getElementById('btnLetter');
+  const open = body.classList.toggle('open');
+  btn.textContent = open ? 'Fechar carta' : 'Abrir carta';
+}
+
+// ── Motivos ───────────────────────────────────────────────────────────────
+const reasons = [
+  'Pelo seu sorriso que ilumina qualquer ambiente',
+  'Pela forma como você me faz sentir em casa',
+  'Pela sua risada que é a minha música favorita',
+  'Por ser minha calma nos momentos mais difíceis',
+  'Pelo jeito carinhoso com que você cuida de tudo',
+  'Por cada abraço que faz o mundo inteiro parar',
+  'Por ser honesta e verdadeira comigo sempre',
+  'Pelo seu olhar que diz mais do que mil palavras',
+  'Por me fazer acreditar que o amor bonito existe',
+  'Por cada momento simples que você transforma em especial',
+  'Pela sua força que me inspira todos os dias',
+  'Por ser exatamente quem você é — sem filtros, sem máscaras',
+  'Por me escolher todos os dias, assim como eu te escolho',
+  'Por tornar minha vida infinitamente mais bonita só com sua presença'
+];
+let lastReason = -1;
+function showReason() {
+  let idx;
+  do { idx = Math.floor(Math.random() * reasons.length); } while (idx === lastReason && reasons.length > 1);
+  lastReason = idx;
+  document.getElementById('reasonDisplay').innerHTML =
+    `<div class="reason-card">
+      <p class="reason-number">Motivo ${idx + 1} de muitos</p>
+      <p class="reason-text">${reasons[idx]}</p>
+    </div>`;
+}
 </script>
 </body>
 </html>
